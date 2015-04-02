@@ -1,0 +1,28 @@
+<table class="table table-striped tablesorter-blue">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Form type</th>
+      <th>Creditor</th>
+      <th>Purpose of debt/obligation</th>
+      <th>Beginning balance</th>
+      <th>Amount incurred this period</th>
+      <th>Amount paid this period</th>
+      <th>Closing balance</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @itemizations.each do |item| %>
+    <tr>
+      <td id="<%= item[:transaction_id_number] %>"><a href="#<%= item[:transaction_id_number] %>">#</a></td>
+      <td><%= item[:form_type] %></td>
+      <td><%= display_creditor(item) %></td>
+      <td><%= item[:purpose_of_debt_or_obligation] %></td>
+      <td><%= number_with_delimiter(item[:beginning_balance_this_period]) %></td>
+      <td><%= number_with_delimiter(item[:incurred_amount_this_period]) %></td>
+      <td><%= number_with_delimiter(item[:payment_amount_this_period]) %></td>
+      <td><%= number_with_delimiter(item[:balance_at_close_this_period]) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

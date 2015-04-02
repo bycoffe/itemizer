@@ -34,6 +34,14 @@ module HomeHelper
     end
   end
 
+  def display_creditor(item)
+    if not item[:creditor_last_name].blank?
+      "#{item[:creditor_last_name]}, #{item[:creditor_first_name]} #{item[:creditor_middle_name]}"
+    else
+      item[:creditor_organization_name]
+    end
+  end
+
   def display_candidate_office(item)
     if item[:candidate_office] == 'H'
       "#{item[:candidate_last_name]}, #{item[:candidate_first_name]} (#{item[:candidate_state]}-#{item[:candidate_district]})"
